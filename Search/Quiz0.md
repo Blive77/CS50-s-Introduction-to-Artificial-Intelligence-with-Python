@@ -16,23 +16,37 @@ Between depth first search (DFS) and breadth first search (BFS), which will find
 
 **✅ Answer / Resposta:** Breadth first search will sometimes, but not always, find a shorter path than depth first search
 
-### 🇬🇧 Why
-- **BFS** uses a **queue** and explores the maze layer by layer: first all states 1 step away, then 2, and so on. So the first path it finds to the goal is **always the shortest** (when all steps cost the same).
-- **DFS** uses a **stack** and follows one branch to the end before backtracking. The path it finds depends on the order it picks directions — it may be the shortest, but it can also be much longer.
-- Therefore:
-  - DFS **never** finds a shorter path than BFS (BFS already has the minimum) → rules out options 1 and 3.
-  - BFS doesn't always win, because DFS can get "lucky" and find the same path → rules out option 2.
-  - They aren't always equal, because DFS may find a longer path → rules out option 5.
-  - What's left: BFS **sometimes** finds a shorter path.
+### 📘 DFS vs BFS — Quick reference / Resumo
 
-### 🇵🇹 Porquê
-- O **BFS** usa uma **fila** (queue) e explora o labirinto por camadas: primeiro todos os estados a 1 passo, depois a 2, etc. Por isso, o primeiro caminho que encontra até ao objetivo é **sempre o mais curto** (quando todos os passos custam o mesmo).
-- O **DFS** usa uma **pilha** (stack) e segue um ramo até ao fim antes de recuar. O caminho que encontra depende da ordem em que escolhe as direções — pode ser o mais curto, mas também pode ser muito mais longo.
-- Logo:
-  - O DFS **nunca** encontra um caminho mais curto que o BFS (o BFS já tem o mínimo) → exclui as opções 1 e 3.
-  - Nem sempre o BFS ganha, porque o DFS pode ter "sorte" e encontrar o mesmo caminho → exclui a opção 2.
-  - Nem sempre são iguais, porque o DFS pode encontrar um caminho mais longo → exclui a opção 5.
-  - Resta: o BFS encontra **às vezes** um caminho mais curto.
+```
+        A
+      /   \
+     B     C
+    / \   / \
+   D   E F   G
+```
+
+| Algorithm | Exploration order | Idea / Ideia |
+|---|---|---|
+| **DFS** (Depth-First) | A → B → D → E → C → F → G | Goes **deep** down one branch, then backtracks / Vai **ao fundo** de um ramo e depois recua |
+| **BFS** (Breadth-First) | A → B → C → D → E → F → G | Explores **level by level**, like a wave / Explora **nível a nível**, como uma onda |
+
+| | DFS | BFS |
+|---|---|---|
+| Frontier / Fronteira | **Stack / Pilha** (last in, first out) | **Queue / Fila** (first in, first out) |
+| Shortest path? / Caminho mais curto? | ❌ Not always / Nem sempre | ✅ Always (equal step costs) / Sempre (custos iguais) |
+| Memory / Memória | Low / Pouca (only the current branch / só o ramo atual) | High / Muita (the whole level / o nível inteiro) |
+| Analogy / Analogia | Following one wall of a maze to the end / Seguir uma parede do labirinto até ao fim | Ripples from a stone in a lake / Ondas de uma pedra num lago |
+
+Only one line changes in code / Em código só muda uma linha:
+
+```python
+node = frontier.pop()     # DFS: remove last  / tira o último  (stack / pilha)
+node = frontier.pop(0)    # BFS: remove first / tira o primeiro (queue / fila)
+```
+
+> **TL;DR:** Need the shortest path → **BFS**. Low memory or goal likely deep → **DFS**.
+> Precisas do caminho mais curto → **BFS**. Pouca memória ou objetivo provavelmente fundo → **DFS**.
 
 ---
 
