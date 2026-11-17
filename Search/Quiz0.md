@@ -14,7 +14,7 @@ Between depth first search (DFS) and breadth first search (BFS), which will find
 - [x] **BFS will sometimes, but not always, find a shorter path than DFS**
 - [ ] Both algorithms will always find paths of the same length
 
-**✅ Answer / Resposta:** BFS will sometimes, but not always, find a shorter path than DFS
+**✅ Answer / Resposta:** Breadth first search will sometimes, but not always, find a shorter path than depth first search
 
 ### 🇬🇧 Why
 - **BFS** uses a **queue** and explores the maze layer by layer: first all states 1 step away, then 2, and so on. So the first path it finds to the goal is **always the shortest** (when all steps cost the same).
