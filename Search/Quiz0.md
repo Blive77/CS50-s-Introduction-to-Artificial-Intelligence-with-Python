@@ -78,7 +78,12 @@ Of the four search algorithms discussed in lecture — depth-first search, bread
 - [ ] Could not be any of the four algorithms
 
 **✅ Answer / Resposta:** Could only be DFS
-
+### Porquê
+O ponto-chave é o topo do pequeno "degrau" a meio do caminho (na linha de baixo, onde o caminho sobe, vai para a direita e volta a **descer**). Nessa célula há uma célula livre (⬜) **logo acima**, que dá para um corredor comprido a subir em direção à linha do B. Essa célula **não foi explorada** (está ⬜, não 🟥).
+- **Greedy best-first (Manhattan):** a célula de cima está **mais perto** de B (menor distância de Manhattan) do que a célula de baixo que o caminho seguiu. O greedy tê-la-ia expandido primeiro. ❌
+- **A\* (Manhattan):** as duas células têm o mesmo `g(n)`, mas a de cima tem menor `h(n)`, logo menor `f(n) = g(n) + h(n)`. O A\* tê-la-ia expandido primeiro. ❌
+- **BFS:** essa célula está a 8 passos de A, enquanto B está a 22. O BFS explora todos os estados mais próximos do que o objetivo antes de lá chegar, por isso teria explorado essa célula (e o corredor todo). ❌
+- **DFS:** escolhe um vizinho e segue-o até um beco sem saída, depois recua — as células vermelhas são becos curtos (duas acima de A, duas perto de B) e muitas células alcançáveis nunca foram tocadas. Encaixa no DFS a ter "sorte" nas escolhas. ✅
 
 ### 📘 Algoritmos de procura — Resumo
 
@@ -97,12 +102,7 @@ Of the four search algorithms discussed in lecture — depth-first search, bread
 
 > **Resumo:** o DFS vai ao fundo, o BFS vai em largura, o Greedy vai na direção do objetivo e o A\* também, mas conta o custo já percorrido.
 
-### Porquê
-O ponto-chave é o topo do pequeno "degrau" a meio do caminho (na linha de baixo, onde o caminho sobe, vai para a direita e volta a **descer**). Nessa célula há uma célula livre (⬜) **logo acima**, que dá para um corredor comprido a subir em direção à linha do B. Essa célula **não foi explorada** (está ⬜, não 🟥).
-- **Greedy best-first (Manhattan):** a célula de cima está **mais perto** de B (menor distância de Manhattan) do que a célula de baixo que o caminho seguiu. O greedy tê-la-ia expandido primeiro. ❌
-- **A\* (Manhattan):** as duas células têm o mesmo `g(n)`, mas a de cima tem menor `h(n)`, logo menor `f(n) = g(n) + h(n)`. O A\* tê-la-ia expandido primeiro. ❌
-- **BFS:** essa célula está a 8 passos de A, enquanto B está a 22. O BFS explora todos os estados mais próximos do que o objetivo antes de lá chegar, por isso teria explorado essa célula (e o corredor todo). ❌
-- **DFS:** escolhe um vizinho e segue-o até um beco sem saída, depois recua — as células vermelhas são becos curtos (duas acima de A, duas perto de B) e muitas células alcançáveis nunca foram tocadas. Encaixa no DFS a ter "sorte" nas escolhas. ✅
+
 
 
 ---
