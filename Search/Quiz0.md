@@ -118,14 +118,6 @@ Why is depth-limited minimax sometimes preferable to minimax without a depth lim
 
 **✅ Answer / Resposta:** Depth-limited minimax can arrive at a decision more quickly because it explores fewer states
 
-### 🇬🇧 Why
-- Minimax without a limit explores the tree **all the way to terminal states**. In games like chess the number of states is astronomical (~10^120 possible games) → impossible in reasonable time.
-- With a depth limit, it stops after *n* moves and uses an **evaluation function** to estimate the value of that state. It explores far fewer states → decides **faster**.
-- Why the others are wrong:
-  - *"Same output"* → false: since it uses estimates, it may give a **different** (and worse) decision.
-  - *"More optimal decision"* → false: full minimax is optimal; the limited version can only be equal or worse. (Skipping states known to be suboptimal is **alpha-beta pruning**, a different technique.)
-  - *"Never preferable"* → false: in practice it's the only viable option for large games.
-
 ### 🇵🇹 Porquê
 - O minimax sem limite explora a árvore **até aos estados terminais**. Em jogos como o xadrez, o número de estados é astronómico (~10^120 jogos possíveis) → impossível em tempo útil.
 - Com limite de profundidade, para ao fim de *n* jogadas e usa uma **função de avaliação** para estimar o valor desse estado. Explora muito menos estados → decide **mais rápido**.
