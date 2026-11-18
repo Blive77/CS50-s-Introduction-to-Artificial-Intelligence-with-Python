@@ -118,7 +118,7 @@ Why is depth-limited minimax sometimes preferable to minimax without a depth lim
 
 **✅ Answer / Resposta:** Depth-limited minimax can arrive at a decision more quickly because it explores fewer states
 
-### 🇵🇹 Porquê
+### Porquê
 - O minimax sem limite explora a árvore **até aos estados terminais**. Em jogos como o xadrez, o número de estados é astronómico (~10^120 jogos possíveis) → impossível em tempo útil.
 - Com limite de profundidade, para ao fim de *n* jogadas e usa uma **função de avaliação** para estimar o valor desse estado. Explora muito menos estados → decide **mais rápido**.
 - Porque as outras estão erradas:
@@ -156,26 +156,7 @@ What is the value of the root node?
 
 **✅ Answer / Resposta:** `5`
 
-### 🇬🇧 Why
-Minimax evaluates the tree **bottom-up**:
-1. Start at the leaves (given values).
-2. Each **MIN** node (red ↓ arrow) takes the **smallest** value of its children — the opponent picks the move that's worst for us.
-3. Each **MAX** node (green ↑ arrow) takes the **largest** value of its children — we pick the best move.
-4. Repeat level by level up to the root (MAX).
-
-Applied to this tree:
-
-| MIN node | Children | Value (min) |
-|---|---|---|
-| Left | 9, 6, 5 | **5** |
-| Middle | 1, 4, 3 | **1** |
-| Right | 7, 2, 8 | **2** |
-
-Root (MAX) = max(5, 1, 2) = **5**
-
-Note: the leaf 9 is the biggest value, but MAX can't reach it — if MAX picks the left branch, MIN will answer with 5.
-
-### 🇵🇹 Porquê
+### Porquê
 O minimax avalia a árvore **de baixo para cima**:
 1. Começa nas folhas (valores dados).
 2. Cada nó **MIN** (seta vermelha ↓) fica com o **menor** valor dos seus filhos — o adversário escolhe a jogada pior para nós.
