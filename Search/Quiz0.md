@@ -16,7 +16,7 @@ Between depth first search (DFS) and breadth first search (BFS), which will find
 
 **✅ Answer / Resposta:** Breadth first search will sometimes, but not always, find a shorter path than depth first search
 
-### 📘 DFS vs BFS — Quick reference / Resumo
+### 📘 DFS vs BFS — Resumo
 
 ```
         A
@@ -26,27 +26,26 @@ Between depth first search (DFS) and breadth first search (BFS), which will find
    D   E F   G
 ```
 
-| Algorithm | Exploration order | Idea / Ideia |
+| Algoritmo | Ordem de exploração | Ideia |
 |---|---|---|
-| **DFS** (Depth-First) | A → B → D → E → C → F → G | Goes **deep** down one branch, then backtracks / Vai **ao fundo** de um ramo e depois recua |
-| **BFS** (Breadth-First) | A → B → C → D → E → F → G | Explores **level by level**, like a wave / Explora **nível a nível**, como uma onda |
+| **DFS** (Depth-First) | A → B → D → E → C → F → G | Vai **ao fundo** de um ramo e depois recua |
+| **BFS** (Breadth-First) | A → B → C → D → E → F → G | Explora **nível a nível**, como uma onda |
 
 | | DFS | BFS |
 |---|---|---|
-| Frontier / Fronteira | **Stack / Pilha** (last in, first out) | **Queue / Fila** (first in, first out) |
-| Shortest path? / Caminho mais curto? | ❌ Not always / Nem sempre | ✅ Always (equal step costs) / Sempre (custos iguais) |
-| Memory / Memória | Low / Pouca (only the current branch / só o ramo atual) | High / Muita (the whole level / o nível inteiro) |
-| Analogy / Analogia | Following one wall of a maze to the end / Seguir uma parede do labirinto até ao fim | Ripples from a stone in a lake / Ondas de uma pedra num lago |
+| Fronteira | **Pilha** (stack): último a entrar, primeiro a sair | **Fila** (queue): primeiro a entrar, primeiro a sair |
+| Caminho mais curto? | ❌ Nem sempre | ✅ Sempre (se os passos custarem o mesmo) |
+| Memória | Pouca (só o ramo atual) | Muita (o nível inteiro) |
+| Analogia | Seguir uma parede do labirinto até ao fim | Ondas de uma pedra num lago |
 
-Only one line changes in code / Em código só muda uma linha:
+Em código só muda uma linha:
 
 ```python
-node = frontier.pop()     # DFS: remove last  / tira o último  (stack / pilha)
-node = frontier.pop(0)    # BFS: remove first / tira o primeiro (queue / fila)
+node = frontier.pop()     # DFS: tira o último (pilha)
+node = frontier.pop(0)    # BFS: tira o primeiro (fila)
 ```
 
-> **TL;DR:** Need the shortest path → **BFS**. Low memory or goal likely deep → **DFS**.
-> Precisas do caminho mais curto → **BFS**. Pouca memória ou objetivo provavelmente fundo → **DFS**.
+> **Resumo:** precisas do caminho mais curto → **BFS**. Pouca memória ou objetivo provavelmente fundo → **DFS**.
 
 ---
 
@@ -94,23 +93,22 @@ O ponto-chave é o topo do pequeno "degrau" a meio do caminho (na linha de baixo
 - **BFS:** essa célula está a 8 passos de A, enquanto B está a 22. O BFS explora todos os estados mais próximos do que o objetivo antes de lá chegar, por isso teria explorado essa célula (e o corredor todo). ❌
 - **DFS:** escolhe um vizinho e segue-o até um beco sem saída, depois recua — as células vermelhas são becos curtos (duas acima de A, duas perto de B) e muitas células alcançáveis nunca foram tocadas. Encaixa no DFS a ter "sorte" nas escolhas. ✅
 
-### 📘 Search algorithms — Quick reference / Resumo
+### 📘 Algoritmos de procura — Resumo
 
-| Algorithm | Frontier / Fronteira | Picks next / Escolhe a seguir | Uses heuristic? / Usa heurística? | Optimal? / Ótimo? |
+| Algoritmo | Fronteira | Escolhe a seguir | Usa heurística? | Ótimo? |
 |---|---|---|---|---|
-| **DFS** | Stack / Pilha | Most recent node / O nó mais recente | ❌ | ❌ |
-| **BFS** | Queue / Fila | Oldest node / O nó mais antigo | ❌ | ✅ (equal costs / custos iguais) |
-| **Greedy best-first** | Priority queue / Fila de prioridade | Lowest `h(n)` / Menor `h(n)` | ✅ | ❌ |
-| **A\*** | Priority queue / Fila de prioridade | Lowest `g(n) + h(n)` / Menor `g(n) + h(n)` | ✅ | ✅ (if `h` is admissible and consistent / se `h` for admissível e consistente) |
+| **DFS** | Pilha | O nó mais recente | ❌ | ❌ |
+| **BFS** | Fila | O nó mais antigo | ❌ | ✅ (custos iguais) |
+| **Greedy best-first** | Fila de prioridade | Menor `h(n)` | ✅ | ❌ |
+| **A\*** | Fila de prioridade | Menor `g(n) + h(n)` | ✅ | ✅ (se `h` for admissível e consistente) |
 
-- `g(n)` = cost so far from the start / custo do início até `n`
-- `h(n)` = estimated cost to the goal (e.g. Manhattan distance) / custo estimado até ao objetivo (ex.: distância de Manhattan)
-- **Manhattan distance / Distância de Manhattan:** `|x1 − x2| + |y1 − y2|` (steps ignoring walls / passos ignorando paredes)
-- **Uninformed / Não informados:** DFS, BFS (they don't know where the goal is / não sabem onde está o objetivo)
-- **Informed / Informados:** Greedy, A\* (they use `h(n)` to guide the search / usam `h(n)` para guiar a procura)
+- `g(n)` = custo do início até `n`
+- `h(n)` = custo estimado até ao objetivo (ex.: distância de Manhattan)
+- **Distância de Manhattan:** `|x1 − x2| + |y1 − y2|` (passos ignorando paredes)
+- **Não informados:** DFS, BFS (não sabem onde está o objetivo)
+- **Informados:** Greedy, A\* (usam `h(n)` para guiar a procura)
 
-> **TL;DR:** DFS goes deep, BFS goes wide, Greedy goes towards the goal, A\* goes towards the goal while counting the cost so far.
-> O DFS vai ao fundo, o BFS vai em largura, o Greedy vai na direção do objetivo e o A\* também, mas conta o custo já percorrido.
+> **Resumo:** o DFS vai ao fundo, o BFS vai em largura, o Greedy vai na direção do objetivo e o A\* também, mas conta o custo já percorrido.
 
 ---
 
