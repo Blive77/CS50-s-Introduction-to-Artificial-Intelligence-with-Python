@@ -81,7 +81,7 @@ Of the four search algorithms discussed in lecture — depth-first search, bread
 **✅ Answer / Resposta:** Could only be DFS
 
 ### 🇬🇧 Why
-The key spot is the top of the small "bump" in the middle of the path (bottom row, where the path goes up, right, and back **down**). At that cell there is an free (⬜) cell **directly above** it, leading into a long open corridor going up towards B's row. That cell was **not explored** (it's ⬜, not 🟥).
+The key spot is the top of the small "bump" in the middle of the path (bottom row, where the path goes up, right, and back **down**). At that cell there is a free (⬜) cell **directly above** it, leading into a long open corridor going up towards B's row. That cell was **not explored** (it's ⬜, not 🟥).
 - **Greedy best-first (Manhattan):** the cell above is **closer** to B (lower Manhattan distance) than the cell below that the path took. Greedy would have expanded it first. ❌
 - **A\* (Manhattan):** both cells have the same `g(n)`, but the cell above has a smaller `h(n)`, so a smaller `f(n) = g(n) + h(n)`. A\* would have expanded it first. ❌
 - **BFS:** that cell is only 8 steps from A, while B is 22 steps away. BFS explores every state closer than the goal before reaching it, so it would have explored that cell (and the whole corridor). ❌
@@ -93,6 +93,24 @@ O ponto-chave é o topo do pequeno "degrau" a meio do caminho (na linha de baixo
 - **A\* (Manhattan):** as duas células têm o mesmo `g(n)`, mas a de cima tem menor `h(n)`, logo menor `f(n) = g(n) + h(n)`. O A\* tê-la-ia expandido primeiro. ❌
 - **BFS:** essa célula está a 8 passos de A, enquanto B está a 22. O BFS explora todos os estados mais próximos do que o objetivo antes de lá chegar, por isso teria explorado essa célula (e o corredor todo). ❌
 - **DFS:** escolhe um vizinho e segue-o até um beco sem saída, depois recua — as células vermelhas são becos curtos (duas acima de A, duas perto de B) e muitas células alcançáveis nunca foram tocadas. Encaixa no DFS a ter "sorte" nas escolhas. ✅
+
+### 📘 Search algorithms — Quick reference / Resumo
+
+| Algorithm | Frontier / Fronteira | Picks next / Escolhe a seguir | Uses heuristic? / Usa heurística? | Optimal? / Ótimo? |
+|---|---|---|---|---|
+| **DFS** | Stack / Pilha | Most recent node / O nó mais recente | ❌ | ❌ |
+| **BFS** | Queue / Fila | Oldest node / O nó mais antigo | ❌ | ✅ (equal costs / custos iguais) |
+| **Greedy best-first** | Priority queue / Fila de prioridade | Lowest `h(n)` / Menor `h(n)` | ✅ | ❌ |
+| **A\*** | Priority queue / Fila de prioridade | Lowest `g(n) + h(n)` / Menor `g(n) + h(n)` | ✅ | ✅ (if `h` is admissible and consistent / se `h` for admissível e consistente) |
+
+- `g(n)` = cost so far from the start / custo do início até `n`
+- `h(n)` = estimated cost to the goal (e.g. Manhattan distance) / custo estimado até ao objetivo (ex.: distância de Manhattan)
+- **Manhattan distance / Distância de Manhattan:** `|x1 − x2| + |y1 − y2|` (steps ignoring walls / passos ignorando paredes)
+- **Uninformed / Não informados:** DFS, BFS (they don't know where the goal is / não sabem onde está o objetivo)
+- **Informed / Informados:** Greedy, A\* (they use `h(n)` to guide the search / usam `h(n)` para guiar a procura)
+
+> **TL;DR:** DFS goes deep, BFS goes wide, Greedy goes towards the goal, A\* goes towards the goal while counting the cost so far.
+> O DFS vai ao fundo, o BFS vai em largura, o Greedy vai na direção do objetivo e o A\* também, mas conta o custo já percorrido.
 
 ---
 
