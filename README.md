@@ -85,7 +85,6 @@ pip install -r requirements.txt
 python maze.py maze1.txt
 ```
 
-> **Nota sobre o Degrees:** o dataset `large/` (~57 MB) não está no repositório para não o tornar pesado. Para o usar, descarrega o [zip oficial do projeto](https://cs50.harvard.edu/ai/projects/0/degrees/) e copia a pasta `large/` para `Search/Project 0/degrees/`. O dataset `small/` já está incluído.
 
 ---
 
