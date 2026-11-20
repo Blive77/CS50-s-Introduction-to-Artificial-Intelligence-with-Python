@@ -25,7 +25,7 @@ As explicações estão em português; os enunciados e o código mantêm-se em i
 
 | # | Módulo | Tema | Quiz | Código da aula | Projetos | Estado |
 |:-:|---|---|:-:|:-:|---|:-:|
-| 0 | [Search](Search/) | Procura em espaços de estados (DFS, BFS, A\*, Minimax) | [Quiz 0](Search/Quiz0.md) | [src0](Search/src0/) | Degrees · Tic-Tac-Toe | 🟡 |
+| 0 | [Search](Search/) | Procura em espaços de estados (DFS, BFS, A\*, Minimax) | [Quiz 0](Search/Quiz0.md) | [src0](Search/src0/) | [Degrees](Search/Project%200/degrees/) · [Tic-Tac-Toe](Search/Project%200/tictactoe/) | 🟡 |
 | 1 | Knowledge | Lógica proposicional e inferência | Quiz 1 | src1 | Knights · Minesweeper | ⏳ |
 | 2 | Uncertainty | Probabilidade, redes Bayesianas, Markov | Quiz 2 | src2 | PageRank · Heredity | ⏳ |
 | 3 | Optimization | Hill climbing, simulated annealing, CSPs | Quiz 3 | src3 | Crossword | ⏳ |
@@ -51,8 +51,9 @@ CS50-s-Introduction-to-Artificial-Intelligence-with-Python/
 │   │   ├── maze.py
 │   │   ├── maze1.txt ...
 │   │   └── requirements.txt
-│   ├── degrees/            # Projeto 0a
-│   └── tictactoe/          # Projeto 0b
+│   └── Project 0/          # Projetos do módulo
+│       ├── degrees/        # Projeto 0a: graus de separação entre atores (BFS)
+│       └── tictactoe/      # Projeto 0b: jogo do galo com IA (Minimax)
 ├── Knowledge/              # Módulo 1
 ├── Uncertainty/            # Módulo 2
 ├── Optimization/           # Módulo 3
@@ -83,6 +84,8 @@ pip install -r requirements.txt
 # 4. Correr um exemplo
 python maze.py maze1.txt
 ```
+
+> **Nota sobre o Degrees:** o dataset `large/` (~57 MB) não está no repositório para não o tornar pesado. Para o usar, descarrega o [zip oficial do projeto](https://cs50.harvard.edu/ai/projects/0/degrees/) e copia a pasta `large/` para `Search/Project 0/degrees/`. O dataset `small/` já está incluído.
 
 ---
 

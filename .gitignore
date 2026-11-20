@@ -1,0 +1,7 @@
+# Dataset grande do projeto Degrees (~57 MB): vem no zip oficial do CS50
+Search/Project 0/degrees/large/
+
+# Python
+__pycache__/
+*.pyc
+.venv/
